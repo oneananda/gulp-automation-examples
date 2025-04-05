@@ -1,0 +1,17 @@
+body {
+  color: #3498db;
+  font-family: "Helvetica, sans-serif, Ariel";
+}
+body nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+body nav li {
+  display: inline-block;
+  margin-right: 20px;
+}
+body nav a {
+  text-decoration: none;
+  color: #3498db;
+}
