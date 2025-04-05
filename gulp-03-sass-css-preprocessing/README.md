@@ -12,3 +12,9 @@ npm install gulp gulp-sass sass --save-dev
 ```
 gulp sass
 ```
+
+## Continuously watching for changes
+
+```
+gulp sass:watch
+```
