@@ -7,7 +7,7 @@ This project demonstrates how to use Gulp with the `gulp-uglify` plugin to minif
 - [Node.js](https://nodejs.org/)
 - [Gulp CLI](https://gulpjs.com/) installed globally. You can install it with:
 
-  ```
+  ```bash
   npm install --global gulp-cli
   ```
 
@@ -17,19 +17,19 @@ This project demonstrates how to use Gulp with the `gulp-uglify` plugin to minif
 2. Navigate to the project directory in your terminal.
 3. Install the required dependencies by running:
 
-   ```
+   ```bash
    npm install gulp gulp-uglify
    ```
 
 ## Project Structure
 
-    ```
-    gulp-04-uglify-minify/
-    ├── gulpfile.js         # Gulp tasks for minifying JavaScript files
-    ├── package.json        # Project metadata and dependencies
-    ├── source-folder/      # Folder containing the original JavaScript files
-    └── destination-folder/ # Folder where the minified JavaScript files will be saved
-    ```
+```
+gulp-04-uglify-minify/
+├── gulpfile.js         # Gulp tasks for minifying JavaScript files
+├── package.json        # Project metadata and dependencies
+├── source-folder/      # Folder containing the original JavaScript files
+└── destination-folder/ # Folder where the minified JavaScript files will be saved
+```
 
 ## Usage
 
@@ -37,9 +37,9 @@ This project demonstrates how to use Gulp with the `gulp-uglify` plugin to minif
 
 To run the minification process, simply execute the default Gulp task:
 
-    ```
-    gulp
-    ```
+```bash
+gulp
+```
 
 This command will run the `minify.js` task, which reads all JavaScript files from the `source-folder`, minifies them using `gulp-uglify`, and writes the minified files to the `destination-folder`.
 
