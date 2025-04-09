@@ -1,0 +1,16 @@
+{
+  "name": "gulp-07-babel-transpile",
+  "version": "1.0.0",
+  "description": "Transpile modern JavaScript (ES6/ESNext) to a browser-compatible version with Babel and sourcemaps using Gulp",
+  "main": "gulpfile.js",
+  "scripts": {
+    "build": "gulp"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.0",
+    "@babel/preset-env": "^7.18.0",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-sourcemaps": "^3.0.0"
+  }
+}
