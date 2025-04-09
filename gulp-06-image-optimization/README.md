@@ -1,190 +1,99 @@
-﻿# Gulp Automation Projects
+﻿# gulp-06-image-optimization
 
-This repository showcases various **Gulp**-based workflows for front-end automation. Each subfolder in this repository demonstrates a particular Gulp use case or concept. Explore, modify, and use them as a reference for your own projects.
+A Gulp task setup for image optimization using [gulp-imagemin](https://www.npmjs.com/package/gulp-imagemin). This project processes and optimizes JPEG, PNG, and SVG files to reduce file sizes while maintaining visual quality.
 
 ## Table of Contents
 
-1. [Getting Started](#getting-started)  
-2. [Project Structure](#project-structure)  
-3. [Project Details](#project-details)  
-   - [gulp-01-basic-read-files](#gulp-01-basic-read-files)  
-   - [gulp-02-basic-read-files-params](#gulp-02-basic-read-files-params)  
-   - [gulp-03-sass-css-preprocessing](#gulp-03-sass-css-preprocessing)  
-   - [gulp-04-uglify-minify](#gulp-04-uglify-minify)  
-   - [gulp-05-concat-strings-gulp-concat](#gulp-05-concat-strings-gulp-concat)  
-4. [Expanding to More Projects](#expanding-to-more-projects)  
-5. [License](#license)  
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Configuration](#configuration)
+- [Project Structure](#project-structure)
+- [Contributing](#contributing)
+- [License](#license)
 
----
+## Features
 
-## Getting Started
+- **JPEG Optimization:** Uses `imagemin.mozjpeg` with quality set to 75 and enables progressive rendering.
+- **PNG Optimization:** Uses `imagemin.optipng` with an optimization level of 5.
+- **SVG Optimization:** Uses `imagemin.svgo` while preserving the viewBox and IDs to ensure SVG files remain scalable and accessible.
 
-1. **Clone the Repository**  
-   ```bash
-   git clone https://github.com/your-username/gulp-automation-projects.git
-   cd gulp-automation-projects
-   ```
+## Installation
 
-2. **Install Dependencies**  
-   - If each sub-project has its own `package.json`, navigate into each folder and run `npm install`.  
-   - If you have a single root `package.json`, just run `npm install` in the root folder.  
+Before running the task, make sure you have [Node.js](https://nodejs.org/) installed. Then, install the dependencies using npm or yarn.
 
-3. **Run Gulp Tasks**  
-   - Typically, you will navigate into a specific project folder and run `gulp` (or a custom task name, e.g. `gulp build`, `gulp watch`, etc.).  
-   - Example:  
-     ```bash
-     cd gulp-01-basic-read-files
-     gulp
-     ```
+Using **npm**:
 
----
+```bash
+npm install gulp gulp-imagemin --save-dev
+```
+
+Or using **yarn**:
+
+```bash
+yarn add gulp gulp-imagemin --dev
+```
+
+## Usage
+
+This project contains a Gulp task defined in `gulpfile.mjs` which optimizes images stored in `source-folder/images` and outputs them to `destination-folder/images`.
+
+To run the image optimization task, execute:
+
+```bash
+npx gulp
+```
+
+If you want to run the specific task directly:
+
+```bash
+npx gulp optimizeImages
+```
+
+### Command Explanation
+
+- **Source Folder:** `source-folder/images/**/*.{png,jpg,jpeg,svg}` – Includes all PNG, JPG, JPEG, and SVG images in the specified folder and its subdirectories.
+- **Destination Folder:** `destination-folder/images` – The optimized images will be saved here.
+
+## Configuration
+
+You can adjust the image optimization settings in the `gulpfile.mjs`:
+
+- **JPEG:** Change the quality and progressive settings in `imagemin.mozjpeg({ quality: 75, progressive: true })`.
+- **PNG:** Tweak the optimization level with `imagemin.optipng({ optimizationLevel: 5 })`.
+- **SVG:** Modify the SVGO plugin settings in `imagemin.svgo({ plugins: [{ removeViewBox: false }, { cleanupIDs: false }] })`.
+
+Feel free to modify the file paths or optimization parameters to suit your project needs.
 
 ## Project Structure
 
-```plaintext
-gulp-automation-projects/
-├─ gulp-01-basic-read-files/
-├─ gulp-02-basic-read-files-params/
-├─ gulp-03-sass-css-preprocessing/
-├─ gulp-04-uglify-minify/
-├─ gulp-05-concat-strings-gulp-concat/
-├─ .gitignore
-├─ LICENSE
-├─ package-lock.json
-├─ package.json
-└─ README.md
+```
+gulp-06-image-optimization/
+├── source-folder/
+│   └── images/
+│       ├── example.png
+│       ├── example.jpg
+│       └── example.svg
+├── destination-folder/
+│   └── images/      <-- Optimized images will be output here
+├── gulpfile.mjs
+├── package.json
+└── README.md
 ```
 
-Each `gulp-0x-...` folder contains a Gulp configuration demonstrating a specific feature or task.
+- **gulpfile.mjs:** Contains the Gulp task for image optimization.
+- **source-folder/images:** Place your original images here.
+- **destination-folder/images:** The optimized images will be saved here after running the task.
 
----
+## Contributing
 
-## Project Details
+Contributions are welcome! If you’d like to improve the Gulp task or add new features, please follow these steps:
 
-### gulp-01-basic-read-files
-- **Purpose:** Demonstrates reading files with Gulp and performing a simple output task.  
-- **Key Points:**
-  - Basic introduction to Gulp streams.
-  - Uses `gulp.src` and `gulp.dest`.
-  - Minimal or no additional plugins.
-
-**How to Use:**
-```bash
-cd gulp-01-basic-read-files
-npm install
-gulp
-```
-The default task reads files from a specified directory and writes them to a destination folder.
-
----
-
-### gulp-02-basic-read-files-params
-- **Purpose:** Similar to the first project but showcases how to pass parameters or options to Gulp tasks.  
-- **Key Points:**
-  - Demonstrates customizing the source/destination or file handling with environment variables or command-line arguments.
-  - Introduces some best practices for parameter handling in Gulp.
-
-**How to Use:**
-```bash
-cd gulp-02-basic-read-files-params
-npm install
-# Example usage:
-gulp --env production
-```
-Depending on the parameter passed, the Gulp task may alter its behavior.
-
----
-
-### gulp-03-sass-css-preprocessing
-- **Purpose:** Demonstrates how to compile SASS (SCSS) files into CSS using Gulp.  
-- **Key Points:**
-  - Utilizes `gulp-sass` (or a similar plugin) for SCSS compilation.
-  - Potentially includes auto-prefixing, sourcemaps, or minification.
-
-**How to Use:**
-```bash
-cd gulp-03-sass-css-preprocessing
-npm install
-gulp
-```
-Your SCSS files will be compiled and output to a CSS folder, often with a minified version.
-
----
-
-### gulp-04-uglify-minify
-- **Purpose:** Focuses on JavaScript minification and uglification.  
-- **Key Points:**
-  - Uses a plugin such as `gulp-uglify`.
-  - Possibly integrates Babel transpilation if ES6+ features are used (optional).
-
-**How to Use:**
-```bash
-cd gulp-04-uglify-minify
-npm install
-gulp
-```
-The script(s) in the source folder will be minified and placed in the destination folder.
-
----
-
-### gulp-05-concat-strings-gulp-concat
-- **Purpose:** Shows how to concatenate multiple files (e.g., JavaScript, CSS, or text) into a single file.  
-- **Key Points:**
-  - Uses `gulp-concat`.
-  - Useful for bundling multiple files into one, reducing HTTP requests.
-
-**How to Use:**
-```bash
-cd gulp-05-concat-strings-gulp-concat
-npm install
-gulp
-```
-Multiple input files are merged into a single output file (e.g., `bundle.js` or `all.css`).
-
----
-
-## Expanding to More Projects
-
-Below are a few suggestions for additional Gulp projects that can be added to this repository. Feel free to create new folders like `gulp-06-...`, `gulp-07-...`, and so on, each demonstrating a unique use case.
-
-- **gulp-06-image-optimization**  
-  - Demonstrate using plugins like `gulp-imagemin` to optimize images (PNG, JPG, SVG).  
-  - Show how to reduce file sizes without compromising quality.
-
-- **gulp-07-babel-transpile**  
-  - Transpile modern JavaScript (ES6/ESNext) to a browser-compatible version using Babel.  
-  - Combine with sourcemaps for debugging.
-
-- **gulp-08-browser-sync-livereload**  
-  - Automatically refresh the browser on file changes.  
-  - Great for rapid development and testing.
-
-- **gulp-09-linting**  
-  - Use `gulp-eslint` or similar plugins to lint JavaScript files.  
-  - Enforce code quality and style guides.
-
-- **gulp-10-cache-busting**  
-  - Add hash strings to file names to prevent caching issues.  
-  - Integrate with HTML templating for updating file references automatically.
-
-Feel free to add any other tasks or workflows that you find useful in your development process!
-
----
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Commit your changes with clear messages.
+4. Open a pull request describing your changes in detail.
 
 ## License
 
-This repository is covered under the [LICENSE](LICENSE) file included in the root directory. Make sure to read the terms before using or distributing this code.
-
----
-
-### Contributing
-
-If you’d like to contribute:
-1. Fork this repository.
-2. Create a new branch for your changes.
-3. Submit a pull request with a clear explanation of your additions or changes.
-
----
-
-
-
+This project is licensed under the [MIT License](LICENSE).
