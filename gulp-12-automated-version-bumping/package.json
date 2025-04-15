@@ -1,0 +1,12 @@
+{
+  "name": "gulp-12-automated-version-bumping",
+  "version": "1.0.0",
+  "description": "gulp-12-automated-version-bumping",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
