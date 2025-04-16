@@ -1,5 +1,8 @@
 ﻿# gulp-12-automated-version-bumping
 
+
+To Automate the process of version bumping
+
 ### Explanation of the Workflow
 
 - **`bump` Task:**  
