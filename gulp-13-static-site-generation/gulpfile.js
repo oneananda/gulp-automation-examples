@@ -72,3 +72,4 @@ gulp.task('default', gulp.series(
     gulp.parallel('markdown', 'pug', 'nunjucks', 'sass', 'scripts', 'images'),
     'serve'
 ));
+ 

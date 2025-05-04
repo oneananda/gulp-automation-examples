@@ -167,7 +167,9 @@ Below are a few suggestions for additional Gulp projects that can be added to th
   - Add hash strings to file names to prevent caching issues.  
   - Integrate with HTML templating for updating file references automatically.
 
-Feel free to add any other tasks or workflows that you find useful in your development process!
+- **gulp-12-automated-version-bumping**
+  - Automatically increments version numbers in `package.json` or other manifest files.
+  - Integrates with release workflows, tags git commits, and updates dependency references while bumping the semantic versioning.
 
 ---
 
